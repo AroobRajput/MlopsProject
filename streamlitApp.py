@@ -13,7 +13,7 @@ y = data.iloc[:, -1]
 
 
 
-X_train, X_test , y_train , y_test = train_test_split(X,y,testsize=0.2, random_state=)
+X_train, X_test , y_train , y_test = train_test_split(X,y,testsize=0.2, random_state=42)
 
 
 y_pred = model.predict(X_test)
@@ -31,13 +31,13 @@ st.write(f"Model{accuracy}")
 st.header("Real-Time Prediction")
 input_data = []
 for col in X_test.columns:
-    input_value = st.numner_input(f'Input for feature {col}', value='')
+    input_value = st.number_input(f'Input for feature {col}', value=0)
     input_data.append(input_value)
 
     #Convert input data to dataframe
 input_df = pd.DataFrame([input_data], columns=X_test.columns)
 
 # Make prediction
-if st.button("Predict"):
+if st.button("Predict"):git add .
     prediction = model.predict(input_df)
     st.write(f'Prediction:{prediction[0]}')
